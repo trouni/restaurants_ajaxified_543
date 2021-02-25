@@ -17,4 +17,12 @@ export default class extends Controller {
   hideForm() {
     this.formTarget.style.height = "0"
   }
+
+  submitOnEnter(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      this.hideForm()
+      Rails.fire(this.formTarget, 'submit')
+    }
+  }
 }
