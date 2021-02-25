@@ -3,28 +3,18 @@
     <div class="col-8">
       <%= image_tag "http://source.unsplash.com/collection/3099344/1000x500", width: "100%", class: "border shadow mb-5" %>
       <h2>Reviews</h2>
-      <p>
-        <%= @restaurant.name %> has <%= pluralize @restaurant.reviews.size, "review" %>
-      </p>
+      <p class="font-italic"><%= pluralize @restaurant.reviews.size, "review" %></p>
+      <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
       <div id="reviews">
         <% if @restaurant.reviews.blank? %>
           Be the first to leave a review for <%= @restaurant.name %>
         <% else %>
-          <% @restaurant.reviews.each do |review| %>
-            <p class="border-bottom font-italic p-5"><%= review.content %></p>
-          <% end %>
+          <%= render @restaurant.reviews.order(created_at: :desc) %>
         <% end %>
       </div>
     </div>
     <div class="col-4">
-      <div class="card sticky-top">
-        <div class="card-body">
-          <h5 class="card-title"><%= @restaurant.name %></h5>
-          <h6 class="card-subtitle mb-3"><%= @restaurant.category %></h6>
-          <h6 class="card-subtitle mb-4 text-muted font-italic"><small><%= @restaurant.address %></small></h6>
-          <p class="card-text"><%= @restaurant.description %></p>
-        </div>
-      </div>
+      <%= render 'restaurants/info_card', restaurant: @restaurant %>
     </div>
   </div>
 </div>

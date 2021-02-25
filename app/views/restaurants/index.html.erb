@@ -1,6 +1,10 @@
-<h1>Restaurants</h1>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-    <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Restaurants</h1>
+      <ul>
+        <%= render @restaurants %>
+      </ul>
+    </div>
+  </div>
+</div>
