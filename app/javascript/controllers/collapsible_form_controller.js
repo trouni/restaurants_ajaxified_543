@@ -14,10 +14,7 @@ export default class extends Controller {
     event.currentTarget.hidden = true
   }
 
-  submitOnEnter(event) {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault()
-      this.formTarget.submit()
-    }
+  hideForm() {
+    this.formTarget.style.height = "0"
   }
 }

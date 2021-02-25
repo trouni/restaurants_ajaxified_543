@@ -8,12 +8,7 @@
     remote: true,
     html: { data: { collapsible_form_target: 'form' } },
   ) do |f| %>
-    <%= f.input :content, as: :text,
-    label: false,
-    input_html: {
-      placeholder: 'Press enter to submit your review.',
-      data: { action: 'keydown->collapsible-form#submitOnEnter' }
-    } %>
-    <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+    <%= f.input :content, as: :text, label: "Leave a review" %>
+    <%= f.button :submit, "Submit", class: "btn btn-primary", data: { action: 'click->collapsible-form#hideForm' } %>
   <% end %>
 </div>
